@@ -60,9 +60,17 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: 1.3rem;
 }
 
+.calculate-btn:disabled {
+  pointer-events: none;
+}
+
 input:focus-within,
 .calculate-btn:hover,
 .calculate-btn:focus-within {
   background-color: var(--secondary);
   border-radius: 1rem;
+}
+
+.result {
+  font-size: 2.5rem;
 }
