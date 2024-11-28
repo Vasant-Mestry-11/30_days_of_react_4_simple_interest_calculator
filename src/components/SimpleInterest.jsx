@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SimpleInterest = () => {
   const [values, setValues] = useState({
-    principal: "",
-    rate: "",
-    time: "",
+    principal: "1000",
+    rate: "7",
+    time: "5",
   });
 
   const [interest, setInterest] = useState(0);
@@ -18,16 +18,18 @@ const SimpleInterest = () => {
     }));
   };
 
-  const calculateInterest = () => {
-    const result = (principal * rate * time) / 100;
-    setInterest(result);
-  };
+  useEffect(() => {
+    const calculateInterest = () => {
+      const result = (principal * rate * time) / 100;
+      setInterest(result);
+    };
 
-  const isButtonDisable = !principal || !rate || !time;
+    calculateInterest();
+  }, [principal, rate, time]);
+
   return (
     <div className="simple-interest-wrapper">
       <h1 className="heading">Simple Interest Calculator</h1>
-      <h2 className="result">Your Interest is {interest}</h2>
       <div className="container">
         <div>
           <input
@@ -57,13 +59,7 @@ const SimpleInterest = () => {
           />
         </div>
       </div>
-      <button
-        className="calculate-btn"
-        onClick={calculateInterest}
-        disabled={isButtonDisable}
-      >
-        Calculate
-      </button>
+      <h2 className="result">Your Interest is {interest}</h2>
     </div>
   );
 };
