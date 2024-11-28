@@ -24,8 +24,8 @@ button {
   padding: 1rem 3rem;
   text-transform: uppercase;
   font-size: 1.3rem;
-  outline: none;
-  border: none;
+  outline-color: transparent;
+  border: transparent;
   letter-spacing: 2px;
 }
 
@@ -61,7 +61,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 input:focus-within,
-.calculate-btn:hover {
+.calculate-btn:hover,
+.calculate-btn:focus-within {
   background-color: var(--secondary);
   border-radius: 1rem;
 }
