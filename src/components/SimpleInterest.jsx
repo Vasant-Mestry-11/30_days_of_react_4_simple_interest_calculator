@@ -8,6 +8,7 @@ const SimpleInterest = () => {
   });
 
   const [interest, setInterest] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   const { principal, rate, time } = values;
 
@@ -19,12 +20,14 @@ const SimpleInterest = () => {
   };
 
   useEffect(() => {
-    const calculateInterest = () => {
+    const calculate = () => {
       const result = (principal * rate * time) / 100;
       setInterest(result);
+      const amount = parseFloat(result) + parseFloat(principal);
+      setTotalAmount(amount);
     };
 
-    calculateInterest();
+    calculate();
   }, [principal, rate, time]);
 
   return (
@@ -60,6 +63,7 @@ const SimpleInterest = () => {
         </div>
       </div>
       <h2 className="result">Your Interest is {interest}</h2>
+      <h2 className="result">Your Total Amount is {totalAmount}</h2>
     </div>
   );
 };
